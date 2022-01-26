@@ -6,15 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenWeather App</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"  />
 </head>
 <body>
-  <div class="container">
-    <div class="weather"></div>
-    <form id="weather-form">
-      <input type="text" id="city-input" placeholder="Enter a city" />
-      <button type="submit">Submit</button>
-    </form>
+  <div class="wrapper">
+    <div class="container">
+      
+      <form id="weather-form">
+        <div class="search">
+        <input type="text" id="city-input" placeholder="Search by City" />
+        </div>
+        <button type="submit">Get Weather</button>
+      </form>
+    
+
+    <div class="card night-time hide"><div class="weather"></div></div>
+  
   </div>
+  </div>
+
 
   <script src="src/main.js"></script>
 </body>
