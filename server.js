@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const rateLimit = require('express-rate-limit')
 require('dotenv').config()
+const serverless = require('serverless-http')
 
 const PORT = process.env.PORT || 5000
 
@@ -9,12 +10,12 @@ const PORT = process.env.PORT || 5000
 const app = express()
 
 // Rate Limiting the users requests to 5 requests within 10 minutes
-// const limiter  = rateLimit({
-//   windowMS: 10 * 60 * 10000, // 10 mins
-//   max: 5,
-// })
-// app.use(limiter)
-// app.set('trust proxy', 1) 
+const limiter  = rateLimit({
+  windowMS: 10 * 60 * 10000, // 10 mins
+  max: 5,
+})
+app.use(limiter)
+app.set('trust proxy', 1) 
 
 // Set static folder
 app.use(express.static('public'))
@@ -26,3 +27,6 @@ app.use('/api', require('./routes/weather'))
 app.use(cors()) 
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+
+module.exports = app;
+module.exports.handler = serverless(app);
