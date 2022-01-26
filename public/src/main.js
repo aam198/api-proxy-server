@@ -2,6 +2,8 @@ const weatherDisplay = document.querySelector('.weather');
 const weatherForm = document.querySelector('#weather-form');
 const cityInput = document.querySelector('#city-input');
 const card = document.querySelector('.card');
+const submitBtn = document.getElementById('submitBtn');
+
 // FetchAPI  weather data from OpenWeather API 
 const fetchWeather = async (city) => {
   
@@ -43,6 +45,7 @@ const kelvinToFahrenheit = (temp) => {
 
 // To add display data to DOM
 const addWeatherToDOM = (data) => {
+  card.style.display='block';
   weatherDisplay.innerHTML = `
   <h1>Current Weather in ${data.city}</h1>
   <h2>${data.temp} &deg;F</h2>
@@ -60,9 +63,10 @@ weatherForm.addEventListener('submit', (e) => {
   e.preventDefault()
 
   if (cityInput.value === ''){
-    alert('Please enter a city')
+    alert('WARNING: Please enter a city')
   }
   else{
+    submitBtn.innerHTML ="Change Location";
     fetchWeather(cityInput.value)
   }
 })

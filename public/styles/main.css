@@ -28,7 +28,7 @@
 body{
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
-  background-color:hsl(217, 54%, 11%);
+  background-color:#343e4b;
   color: #fff;
   display: flex;
   align-items:center;
@@ -97,13 +97,13 @@ button:focus-visible, button:focus-visible::-moz-focus-inner{
 
 
 .card{
-  height: 300px;
-  width: 200px;
-  background-color:  hsl(216, 50%, 16%);
+  height: auto;
+  width: 100%;
+  background-color:  #222834;
   margin: 0 auto;
-  border-radius: 24px;
+  border-radius: 16px;
   margin-bottom: 20px;
   color: #fff;
-
+  /* display: none; */
 }
 
