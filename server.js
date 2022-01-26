@@ -11,7 +11,7 @@ const app = express()
 // Rate Limiting the users requests to 5 requests within 10 minutes
 const limiter  = rateLimit({
   windowMS: 10 * 60 * 10000, // 10 mins
-  max: 5,
+  max: 10,
 })
 app.use(limiter)
 app.set('trust proxy', 1) 
