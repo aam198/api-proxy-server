@@ -3,6 +3,7 @@ const weatherForm = document.querySelector('#weather-form');
 const cityInput = document.querySelector('#city-input');
 const card = document.querySelector('.card');
 const submitBtn = document.getElementById('submitBtn');
+const container = document.querySelector('.container');
 
 // FetchAPI  weather data from OpenWeather API 
 const fetchWeather = async (city) => {
@@ -43,11 +44,16 @@ const kelvinToFahrenheit = (temp) => {
   return Math.ceil(((temp - 273.15) *9) / 5 +32)
 }
 
+
+
 // To add display data to DOM
 const addWeatherToDOM = (data) => {
-  card.style.display='block';
+  container.style.height = 80 + 'vh';
+  container.style.width = 100 + '%';
+  card.style.opacity = 1;
   weatherDisplay.innerHTML = `
   <h1>Current Weather in ${data.city}</h1>
+  <h2>${Date()}</h2>
   <h2>${data.temp} &deg;F</h2>
   <h2>Real feel of ${data.feelLike} &deg;F</h2>
   <h2>Humidity: ${data.humidity} %</h2>`
@@ -59,9 +65,33 @@ const addWeatherToDOM = (data) => {
 
 // Event listener for form submission - city input
 
-weatherForm.addEventListener('submit', (e) => {
-  e.preventDefault()
 
+
+  submitBtn.addEventListener('click', function (e)  {
+    // Add ripple effect to button
+    const x = e.clientX;
+    const y = e.clientY;
+    console.log(x,y);
+  
+    const buttonTop = e.target.offsetTop;
+    const buttonLeft = e.target.offsetLeft;
+    const xInside = x - buttonLeft;
+    const yInside = y - buttonTop;
+  
+    console.log(xInside, yInside);
+  
+    const circle = document.createElement('span')
+    circle.classList.add('circle');
+    circle.style.top = yInside + 'px';
+    circle.style.left = xInside + 'px';
+  
+    this.appendChild(circle);
+
+    setTimeout(() => circle.remove(), 500);
+   });
+
+  weatherForm.addEventListener('submit', (e) => {
+  e.preventDefault()
   if (cityInput.value === ''){
     alert('WARNING: Please enter a city')
   }
@@ -70,3 +100,4 @@ weatherForm.addEventListener('submit', (e) => {
     fetchWeather(cityInput.value)
   }
 })
+
