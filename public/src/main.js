@@ -4,6 +4,7 @@ const cityInput = document.querySelector('#city-input');
 const card = document.querySelector('.card');
 const submitBtn = document.getElementById('submitBtn');
 const container = document.querySelector('.container');
+const sideNav = document.querySelector('aside');
 
 // FetchAPI  weather data from OpenWeather API 
 const fetchWeather = async (city) => {
@@ -51,6 +52,7 @@ const addWeatherToDOM = (data) => {
   container.style.height = 80 + 'vh';
   container.style.width = 100 + '%';
   card.style.opacity = 1;
+  sideNav.classList.remove('hide');
   weatherDisplay.innerHTML = `
   <h1>Current Weather in ${data.city}</h1>
   <h2>${Date()}</h2>
@@ -65,9 +67,7 @@ const addWeatherToDOM = (data) => {
 
 // Event listener for form submission - city input
 
-
-
-  submitBtn.addEventListener('click', function (e)  {
+  submitBtn.addEventListener('click', function (e) {
     // Add ripple effect to button
     const x = e.clientX;
     const y = e.clientY;
@@ -93,7 +93,7 @@ const addWeatherToDOM = (data) => {
   weatherForm.addEventListener('submit', (e) => {
   e.preventDefault()
   if (cityInput.value === ''){
-    alert('WARNING: Please enter a city')
+    alert('Opps! Please enter a city')
   }
   else{
     submitBtn.innerHTML ="Change Location";

@@ -17,6 +17,11 @@
   --day-rain: #131924;
 
   --gold-color: #ffd059;
+
+  --tan-color: #f3e9d2;
+  --emerald: #1a936f;
+  --smith-apple: #88d498;
+  --tea-green: #c6dabf;
 }
 
 *{
@@ -31,22 +36,41 @@ body{
   background-color:#343e4b;
   color: #fff;
   display: flex;
+  flex-direction: column;
   align-items:center;
   justify-content: center;
 }
 
 .wrapper{
-  width: 1000px;
+  width: 1500px;
 }
 
 .container {
-  height: 25vh;
+  height: auto;
   width: 60%;
   margin: 100px auto;
   text-align: center;
   box-shadow: 4px 2px 4px 4px hsl(var(--shadow-color) / 0.833);
   border-radius: 16px;
   transition: height 0.4s ease-in, width 0.4s ease;
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+}
+
+.hide {
+  display: none;
+}
+
+aside {
+  height: 25vh;
+  width: 30%;
+  background: #fff;
+}
+
+main.weather{
+  width: 60%;
+  height: 25vh;
 }
 
 h1{
@@ -57,7 +81,7 @@ h1{
 }
 
 input {
-  width: 40%;
+  width: 70%;
   padding: 10px;
   border: none;
   background:rgba(255,255,255,0.1);
@@ -75,7 +99,7 @@ input {
 
 input[type=text]:focus {
   border:1px solid rgba(255,255,255,0.2);
-  width: 60%;
+  width: 90%;
 }
 
 input:focus-within{
