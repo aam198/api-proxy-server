@@ -7,6 +7,7 @@ const apicache = require('apicache')
 // Env Vars
 
 const API_BASE_URL = process.env.API_BASE_URL
+
 const API_KEY_NAME = process.env.API_KEY_NAME
 const API_KEY_VALUE = process.env.API_KEY_VALUE
 
@@ -16,8 +17,7 @@ let cache = apicache.middleware
 
 // Creating a route
 router.get('/', cache('2 minutes'), async (req, res) => {
-  try{
-
+  try {
     console.log(url.parse(req.url, true).query)
 
     // URL Search Params
@@ -27,9 +27,10 @@ router.get('/', cache('2 minutes'), async (req, res) => {
     })
 
     const apiRes = await needle('get', `${API_BASE_URL}?${params}`)
-    // passing in the actual weather information
+    // Getting and passing in the actual weather information
     const data = apiRes.body
-
+    //Check console for object
+    console.log(data)
     // Logging the request to the public API
     if(process.env.NODE_ENV !== 'production'){
      console.log(`REQUEST: ${API_BASE_URL}?${params}`)
@@ -42,8 +43,6 @@ router.get('/', cache('2 minutes'), async (req, res) => {
   }
   
 })
-
-
 
 // to be able to export to other files
 module.exports = router

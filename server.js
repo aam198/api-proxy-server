@@ -19,7 +19,7 @@ const app = express()
 // Set static folder
 app.use(express.static('public'))
 
-// To use Routes - that's in weather.js
+// To use module.export Routes - that are built in weather.js
 app.use('/api', require('./routes/weather'))
 
 // Enable cors
