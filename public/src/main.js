@@ -6,7 +6,7 @@ const submitBtn = document.getElementById('submitBtn');
 const container = document.querySelector('.container');
 const sideNav = document.querySelector('aside');
 
-// FetchAPI  weather data from OpenWeather API 
+// Fetch weather data from OpenWeather API 
 const fetchWeather = async (city) => {
   
   const url= `/api?q=${city}`

@@ -27,13 +27,13 @@ router.get('/', cache('2 minutes'), async (req, res) => {
     })
 
     const apiRes = await needle('get', `${API_BASE_URL}?${params}`)
-  // passing in the actual weather information
-  const data = apiRes.body
+    // passing in the actual weather information
+    const data = apiRes.body
 
-  // Logging the request to the public API
-  if(process.env.NODE_ENV !== 'production'){
-    console.log(`REQUEST: ${API_BASE_URL}?${params}`)
-  }
+    // Logging the request to the public API
+    if(process.env.NODE_ENV !== 'production'){
+     console.log(`REQUEST: ${API_BASE_URL}?${params}`)
+    }
 
   res.status(200).json(data)
   }
